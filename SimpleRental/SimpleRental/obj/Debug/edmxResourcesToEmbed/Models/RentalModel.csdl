@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideoRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="GenreID" />
+    </Key>
+    <Property Name="GenreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenreName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Movy">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GenreFK" Type="Int32" />
+    <Property Name="CustomerFK" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RentalHeader">
+    <Key>
+      <PropertyRef Name="RentalID" />
+    </Key>
+    <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerFK" Type="Int32" />
+    <Property Name="DateRented" Type="DateTime" Precision="3" />
+    <Property Name="MovieFK" Type="Int32" />
+    <Property Name="DateReturned" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RentedMovy">
+    <Key>
+      <PropertyRef Name="RentedID" />
+    </Key>
+    <Property Name="RentedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieFK" Type="Int32" />
+    <Property Name="DateReturned" Type="DateTime" Precision="3" />
+    <Property Name="RentalFK" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="VideoRentalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Genres" EntityType="Self.Genre" />
+    <EntitySet Name="Movies" EntityType="Self.Movy" />
+    <EntitySet Name="RentalHeaders" EntityType="Self.RentalHeader" />
+    <EntitySet Name="RentedMovies" EntityType="Self.RentedMovy" />
+  </EntityContainer>
+</Schema>

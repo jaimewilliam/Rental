@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VideoRentalModelStoreContainer" CdmEntityContainer="VideoRentalEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="VideoRentalModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="VideoRentalModel.Genre">
+        <MappingFragment StoreEntitySet="Genres">
+          <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+          <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="VideoRentalModel.Movy">
+        <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+          <ScalarProperty Name="GenreFK" ColumnName="GenreFK" />
+          <ScalarProperty Name="CustomerFK" ColumnName="CustomerFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentalHeaders">
+      <EntityTypeMapping TypeName="VideoRentalModel.RentalHeader">
+        <MappingFragment StoreEntitySet="RentalHeader">
+          <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+          <ScalarProperty Name="CustomerFK" ColumnName="CustomerFK" />
+          <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+          <ScalarProperty Name="MovieFK" ColumnName="MovieFK" />
+          <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentedMovies">
+      <EntityTypeMapping TypeName="VideoRentalModel.RentedMovy">
+        <MappingFragment StoreEntitySet="RentedMovies">
+          <ScalarProperty Name="RentedID" ColumnName="RentedID" />
+          <ScalarProperty Name="MovieFK" ColumnName="MovieFK" />
+          <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+          <ScalarProperty Name="RentalFK" ColumnName="RentalFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SimpleRental.Models.Movy>
+
+<div style="position:relative; width:100%; height:100%">
+    <select class="SelectMovie" onchange="setGenre($(this));" >
+        @foreach (var item in Model)
+        {
+            <option data-genreid="@item.GenreFK" value="@item.MovieID">@item.MovieName</option>
+        }
+    </select>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    function setGenre(dd) {
+        var genreId = $('option:selected', $(dd)).attr('data-genreid');
+        var genreList = $(dd).parent().parent().parent().find(".SelectGenre");
+        $(genreList).val(genreId);
+
+        var movid = $(dd).parent().parent().find(".movieidholder");
+        $(movid).val($(dd).val());
+
+        //$('#newMovieIdholder').val($(dd).val());
+
+        //***jQuery push multiple values in input tag
+        var oldValue = $('#newMovieIdholder').val();
+        var arr = oldValue === "" ? [] : oldValue.split(',');
+        arr.push($(dd).val());
+        var newValue = arr.join(',');
+        jQuery('#newMovieIdholder').val(newValue);
+
+        //if (parseInt($(dd).parent().parent().find('.movies').text()) == 0) {
+        //    //$('#additionalRentedIdsholders').val($(dd).val());
+
+        //    //***jQuery push multiple values in input tag
+        //    var oldValue = $('#additionalRentedIdsholders').val();
+        //    var arr = oldValue === "" ? [] : oldValue.split(',');
+        //    arr.push($(dd).val());
+        //    var newValue = arr.join(',');
+        //    jQuery('#additionalRentedIdsholders').val(newValue);
+        //    //jQuery('#additionalRentedIdsholders').val(terms.join(','));
+        //}
+    }
+</script>
