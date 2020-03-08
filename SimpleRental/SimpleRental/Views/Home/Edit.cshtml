@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RentalID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RentalID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.EditorFor(model => model.RentalID, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
                 @Html.ValidationMessageFor(model => model.RentalID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -76,8 +76,8 @@
                             <tr class="clonetr">
                                 <td>
                                     @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].MovieName)*@
-                                    @Html.TextBoxFor(movieID => movieID.RentedLists[i].MovieID, new { @class = "form-control movieidholder", @style = "display:none;" })
-                                    <span class="movieid" style="display:none">@Model.RentedLists[i].MovieID</span>
+                                    @Html.TextBoxFor(movieID => movieID.RentedLists[i].MovieID, new { @class = "form-control movieidholder", @style = "display:block;" })
+                                    <span class="movieid" style="display:block">@Model.RentedLists[i].MovieID</span>
                                     @{Html.RenderAction("DdlMovies", "Home");}
                                 </td>
                                 <td>
@@ -92,7 +92,7 @@
                                 </td>
                                 <td style="visibility:hidden">
                                     @*@Html.DisplayFor(modelItem => item.MovieName)*@
-                                    @Html.TextBoxFor(rentedid => rentedid.RentedLists[i].RentedID, new { @class = "form-control movieidholder", @style = "display:block;" })
+                                    @Html.TextBoxFor(rentedid => rentedid.RentedLists[i].RentedID, new { @class = "form-control", @style = "display:block;" })
 
                                 </td>
                             </tr>
@@ -101,23 +101,23 @@
                    else
                    { 
                        <tr class="clonetr">
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].MovieName)*@
-                                    <span class="movieid">0</span>
-                                    @{Html.RenderAction("DdlMovies", "Home");}
-                                </td>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].GenreName)*@
-                                    @{Html.RenderAction("DdlGenres", "Home", new {movieId = 0 });}
-                                </td>
-                                <td>
-                                    @*@Html.EditorFor(modelItem => modelItem.RentedLists[i].DateReturned, new { htmlAttributes = new { @type = "date" } })*@
-                                    <input class="text-box single-line" data-val="true" data-val-date="The field Date Returned must be a date." id="item_DateReturned" name="item.DateReturned" type="date" value="">
-                                </td>
-                                <td>
-                                    @*@Html.ActionLink("Remove", "Remove", new { movieId = 0})*@
-                                </td>
-                            </tr>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].MovieName)*@
+                                <span class="movieid" style="display:none">0</span>
+                                @{Html.RenderAction("DdlMovies", "Home");}
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].GenreName)*@
+                                @{Html.RenderAction("DdlGenres", "Home", new {movieId = 0 });}
+                            </td>
+                            <td>
+                                @*@Html.EditorFor(modelItem => modelItem.RentedLists[i].DateReturned, new { htmlAttributes = new { @type = "date" } })*@
+                                <input class="text-box single-line" data-val="true" data-val-date="The field Date Returned must be a date." id="item_DateReturned" name="item.DateReturned" type="date" value="">
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Remove", "Remove", new { movieId = 0})*@
+                            </td>
+                        </tr>
                    }
                 }
 
@@ -146,7 +146,7 @@
 <script>
     $(document).ready(function () {
         //$(".SelectMovie").val($('.movieid').text());
-        //**Display MovieName based on customer rented Movie!
+        //**Display MovieName based on customer rented MovieID!
         var movie = $(".SelectMovie");
         for (var i = 0; i < movie.length; i++) {
             var movieid = $(movie[i]).parent().parent().find('.movieid').text();
@@ -166,6 +166,6 @@
             $(newtr).appendTo(".addclone");
             $(newtr).find('.movieid').text('0');
             $(newtr).find('.SelectMovie').val(0);
-        })
+        });
     });
 </script>

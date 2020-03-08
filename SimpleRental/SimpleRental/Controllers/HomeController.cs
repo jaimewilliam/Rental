@@ -112,7 +112,7 @@ namespace SimpleRental.Controllers
                             if (RentedMovies != null)
                             {
                                 RentedMovies.MovieFK = item.MovieID;
-                                RentedMovies.DateReturned = null;
+                                RentedMovies.DateReturned = item.DateReturned;
                                 RentedMovies.RentalFK = Rentalheader.RentalID;
                                 db.SaveChanges();
                             };
@@ -138,6 +138,7 @@ namespace SimpleRental.Controllers
                             db.SaveChanges();
                         }
                     }
+
                 }
 
             }

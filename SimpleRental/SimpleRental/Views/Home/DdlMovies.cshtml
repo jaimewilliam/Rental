@@ -20,25 +20,16 @@
         var movid = $(dd).parent().parent().find(".movieidholder");
         $(movid).val($(dd).val());
 
+
         //$('#newMovieIdholder').val($(dd).val());
-
-        //***jQuery push multiple values in input tag
-        var oldValue = $('#newMovieIdholder').val();
-        var arr = oldValue === "" ? [] : oldValue.split(',');
-        arr.push($(dd).val());
-        var newValue = arr.join(',');
-        jQuery('#newMovieIdholder').val(newValue);
-
-        //if (parseInt($(dd).parent().parent().find('.movies').text()) == 0) {
-        //    //$('#additionalRentedIdsholders').val($(dd).val());
-
-        //    //***jQuery push multiple values in input tag
-        //    var oldValue = $('#additionalRentedIdsholders').val();
-        //    var arr = oldValue === "" ? [] : oldValue.split(',');
-        //    arr.push($(dd).val());
-        //    var newValue = arr.join(',');
-        //    jQuery('#additionalRentedIdsholders').val(newValue);
-        //    //jQuery('#additionalRentedIdsholders').val(terms.join(','));
-        //}
+        if (parseInt($(dd).parent().parent().find('.movieid').text()) === 0)
+        {
+            //***jQuery push multiple values in input tag
+            var oldValue = $('#newMovieIdholder').val();
+            var arr = oldValue === "" ? [] : oldValue.split(',');
+            arr.push($(dd).val());
+            var newValue = arr.join(',');
+            jQuery('#newMovieIdholder').val(newValue);
+        }
     }
 </script>
