@@ -21,8 +21,9 @@ namespace SimpleRental.Controllers
 
         public ActionResult Edit(int rentalid)
         {
-            NewList editList = new NewList();
             var rentid = db.RentalHeaders.Where(i => i.RentalID == rentalid).FirstOrDefault();
+
+            NewList editList = new NewList();
             if (rentid != null)
             {
                 editList.RentalID = rentalid;
