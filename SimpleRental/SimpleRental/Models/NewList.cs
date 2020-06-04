@@ -10,6 +10,7 @@ namespace SimpleRental.Models
     {
         [Display(Name = "Rental ID")]
         public int RentalID { get; set; }
+
         [Display(Name = "Customer Name")]
         public string CustomerName { get; set; }
 

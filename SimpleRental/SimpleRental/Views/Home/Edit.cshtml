@@ -76,8 +76,8 @@
                             <tr class="clonetr">
                                 <td>
                                     @*@Html.DisplayFor(modelItem => modelItem.RentedLists[i].MovieName)*@
-                                    @Html.TextBoxFor(movieID => movieID.RentedLists[i].MovieID, new { @class = "form-control movieidholder", @style = "display:block;" })
-                                    <span class="movieid" style="display:block">@Model.RentedLists[i].MovieID</span>
+                                    @Html.TextBoxFor(movieID => movieID.RentedLists[i].MovieID, new { @class = "form-control movieidholder", @style = "display:none;" })
+                                    <span class="movieid" style="display:none">@Model.RentedLists[i].MovieID</span>
                                     @{Html.RenderAction("DdlMovies", "Home");}
                                 </td>
                                 <td>
@@ -122,7 +122,7 @@
                 }
 
             </table>
-            <input style="display:block" id="newMovieIdholder" type="text" name="newMovieIdholder" value="" />
+            <input style="display:none" id="newMovieIdholder" type="text" name="newMovieIdholder" value="" />
         </div>
 
         <div class="form-group">
